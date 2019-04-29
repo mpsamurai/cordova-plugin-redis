@@ -1,0 +1,18 @@
+{
+  "cordova-plugin-whitelist": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-whitelist@1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-redis": {
+    "source": {
+      "type": "local",
+      "path": "C:\\Users\\yuji_n\\cordova-plugin-redis\\node_modules\\cordova-plugin-redis"
+    },
+    "is_top_level": true,
+    "variables": {}
+  }
+}
