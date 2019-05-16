@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-redis" version="0.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>Redis</name>
+	<js-module name="Redis" src="www/Redis.js">
+		<clobbers target="cordova.plugins.Redis" />
+	</js-module>
+	<platform name="android">
+		<config-file parent="/*" target="res/xml/config.xml">
+			<feature name="Redis">
+				<param name="android-package" value="org.apache.cordova.redis.Redis" />
+			</feature>
+		</config-file>
+		<config-file parent="/*" target="AndroidManifest.xml" >
+			<uses-permission android:name="android.permission.INTERNET" />
+		</config-file>
+		<source-file src="src/android/Redis.java" target-dir="src/cordova-plugin-redis/Redis" />
+		<lib-file src="src/android/libs/jedis-3.0.0.jar" />
+	</platform>
+	<platform name="ios">
+		<config-file parent="/*" target="config.xml">
+			<feature name="Redis">
+				<param name="ios-package" value="Redis" />
+			</feature>
+		</config-file>
+		<source-file src="src/ios/Redis.m" />
+	</platform>
+</plugin>
