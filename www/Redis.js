@@ -32,8 +32,12 @@ exports.publish = function (channel, message, success, error) {
     exec(success, error, 'Redis', 'publish', [channel, message]);
 };
 
-exports.subscribe = function (channels, success, error) {
-    exec(success, error, 'Redis', 'subscribe', [channels]);
+exports.subscribe = function (channel, success, error) {
+    exec(success, error, 'Redis', 'subscribe', [channel]);
+};
+
+exports.unsubscribe = function (channel, success, error) {
+    exec(success, error, 'Redis', 'unsubscribe', [channel]);
 };
 
 exports.finalize = function (success, error) {
