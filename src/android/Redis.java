@@ -92,7 +92,7 @@ public class Redis extends CordovaPlugin {
 
     private void noCallbackFinalize() {
         if (this.jedis != null) {
-            this.jedis.quit();
+            this.jedis.close();
             this.jedis = null;
         }
         for (Subscriber s : subscribers) {
@@ -224,12 +224,21 @@ class Subscriber extends JedisPubSub {
         this.jedis = new Jedis(host, port);
         this.channel = channel;
         this.messageCallback = messageCallback;
-        jedis.subscribe(this, channel);
+        try {
+            jedis.subscribe(this, channel);
+        } catch (Exception e) {
+            this.jedis.close();
+            this.jedis = null;
+        }
     }
 
     public void stop() {
         if (this.jedis != null) {
-            this.jedis.quit();
+            try {
+                this.jedis.quit();
+            } catch (Exception e) {
+            }
+            this.jedis.close();
             this.jedis = null;
         }
     }
